@@ -1,1 +1,1 @@
-# Vega-1.1
+# VF Basket
