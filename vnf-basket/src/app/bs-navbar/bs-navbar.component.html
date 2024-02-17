@@ -1,13 +1,37 @@
-<nav class="py-2 bg-body-tertiary border-bottom">
-    <div class="container d-flex flex-wrap">
-        <ul class="nav me-auto">
-            <li class="nav-item"><a routerLink="/" routerLinkActive="active" class="nav-link link-body-emphasis px-2 active"
-                    aria-current="page">Home</a></li>
-            <li class="nav-item"><a routerLink="/shopping-cart" routerLinkActive="active" class="nav-link link-body-emphasis px-2">Shopping
-                    Cart</a></li>
-        </ul>
-        <ul class="nav">
-            <li class="nav-item"><a routerLink="/login" routerLinkActive="active" class="nav-link link-body-emphasis px-2">Login</a></li>
-        </ul>
+<nav class="navbar navbar-expand-md mb-4">
+    <div class="container-fluid">
+        <a class="navbar-brand mb-1" routerLink="/">V</a>
+        <button class="navbar-toggler me-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse"
+            aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarCollapse">
+            <ul class="navbar-nav me-auto mb-2 mb-md-0">
+                <li class="nav-item"><a routerLink="/" routerLinkActive="active"
+                        class="nav-link link-body-emphasis px-2 active" aria-current="page">Home</a></li>
+                <li class="nav-item">
+                    <a routerLink="/shopping-cart" routerLinkActive="active"
+                        class="nav-link link-body-emphasis px-2">Shopping Cart</a>
+                </li>
+                <li class="nav-item dropdown">
+                    <div ngbDropdown class="d-inline">
+                        <button type="button" class="nav-link link-body-emphasis px-2" id="dropdownBasic1"
+                            ngbDropdownToggle>
+                            User Name
+                        </button>
+                        <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                            <a routerLink="/orders" routerLinkActive="active"
+                                class="nav-link link-body-emphasis px-3">My Orders</a>
+                            <a routerLink="/admin/orders" routerLinkActive="active"
+                                class="nav-link link-body-emphasis px-3">Manage Orders</a>
+                            <a routerLink="/admin/products" routerLinkActive="active"
+                                class="nav-link link-body-emphasis px-3">Manage Products</a>
+                            <a routerLink="/" routerLinkActive="active" class="nav-link link-body-emphasis px-3">Log
+                                Out</a>
+                        </div>
+                    </div>
+                </li>
+            </ul>
+        </div>
     </div>
 </nav>
