@@ -11,7 +11,7 @@ jobs:
       - uses: actions/checkout@v4
       - run: npm install
       - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - uses: FirebaseExtended/action-hosting-deploy@v0/Vnf-Basket
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
