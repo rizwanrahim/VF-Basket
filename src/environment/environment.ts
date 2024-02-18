@@ -1,11 +1,11 @@
 export const environment = {
     firebase: {
-        projectId:"PROJECT_ID",
-        appId:"APP_ID",
-        storageBucket:"STORAGE_BUCKET",
-        apiKey:"API_KEY",
-        authDomain:"AUTH_DOMAIN",
-        messagingSenderId:"MESSAGE_SENDER_ID",
-        measurementId:"MEASUREMENT_ID"
+        projectId: 'GITHUB_SECRET',
+        appId: 'GITHUB_SECRET',
+        storageBucket: 'GITHUB_SECRET',
+        apiKey: 'GITHUB_SECRET',
+        authDomain: 'GITHUB_SECRET',
+        messagingSenderId: 'GITHUB_SECRET',
+        measurementId: 'GITHUB_SECRET'
     }
 }
