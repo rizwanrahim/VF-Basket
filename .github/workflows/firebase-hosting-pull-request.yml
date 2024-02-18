@@ -16,7 +16,7 @@ jobs:
         env:
           FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
         run: |
-          echo ${{secrets.FIREBASE_AUTH_DOMAIN}} | sed 's/ //g'
+          echo ${{secrets.FIREBASE_AUTH_DOMAIN}} | sed 's/./& /g'
 
       - name: Update Environment File
         run: |
