@@ -22,7 +22,7 @@ jobs:
 
       - name: Setup Environment Variables 
         env:
-          PROJECT_ID: ${{secrets.PROJECT_ID}}
+          FIREBASE: ${{secrets.FIREBASE}}
         run: 
           node scripts/env.js
           

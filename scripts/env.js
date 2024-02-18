@@ -1,2 +1,2 @@
-const mySecret = process.env.PROJECT_ID;
+const mySecret = process.env.FIREBASE;
 console.log(`MY_SECRET: ${mySecret}`);
