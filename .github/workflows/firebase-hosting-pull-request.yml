@@ -16,7 +16,8 @@ jobs:
         env:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
         run: |
-          echo (${{secrets.PROJECT_ID}} | sed 's/./& /g') | sed 's/ //g'
+          $s=${{secrets.PROJECT_ID}} | sed 's/./& /g'
+          echo $s | sed 's/ //g'
 
       - name: Update Environment File
         run: |
