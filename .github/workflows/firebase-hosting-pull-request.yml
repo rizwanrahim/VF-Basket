@@ -25,7 +25,6 @@ jobs:
         run: |
           echo "Updating environment.ts file..."
           node scripts/update-environment.js
-      
 
       - name: Display Updated Environment File
         run: cat src/environments/environment.ts
