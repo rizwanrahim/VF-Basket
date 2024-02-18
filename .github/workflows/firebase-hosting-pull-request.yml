@@ -14,9 +14,9 @@ jobs:
         
       - name: Print Firebase Auth Domain Secret
         env:
-          PROJECT_ID: ${{ secrets.PROJECT_ID }} sed 's/./& /g'
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
         run: |
-          echo ${{secrets.PROJECT_ID}}
+          echo (${{secrets.PROJECT_ID}} | sed 's/./& /g') | sed 's/ //g'
 
       - name: Update Environment File
         run: |
