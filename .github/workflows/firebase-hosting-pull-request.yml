@@ -24,7 +24,7 @@ jobs:
           node scripts/env-setup.js
 
       - name: Building App
-        run: npm ci && npm run build
+        run: npm install && npm run build
 
       - name: Deploying App
         uses: FirebaseExtended/action-hosting-deploy@v0
