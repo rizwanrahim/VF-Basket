@@ -14,9 +14,9 @@ jobs:
         
       - name: Print Firebase Auth Domain Secret
         env:
-          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
         run: |
-          echo $FIREBASE_AUTH_DOMAIN
+          echo $AUTH_DOMAIN
 
       - name: Update Environment File
         run: |
