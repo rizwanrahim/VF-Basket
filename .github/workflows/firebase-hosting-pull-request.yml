@@ -12,8 +12,8 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Display Updated Environment File
-        run: cat src/environments/environment.ts
+      # - name: Display Updated Environment File
+      #   run: cat src/environments/environment.ts
 
       - name: Execute 
         env:
