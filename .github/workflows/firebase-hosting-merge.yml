@@ -13,23 +13,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set Environment Variables
-        run: |
-          echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> src/environment/environment.ts
-          echo "APP_ID=${{ secrets.APP_ID }}" >> src/environment/environment.ts
-          echo "STORAGE_BUCKET=${{ secrets.STORAGE_BUCKET }}" >> src/environment/environment.ts
-          echo "API_KEY=${{ secrets.API_KEY }}" >> src/environment/environment.ts
-          echo "AUTH_DOMAIN=${{ secrets.AUTH_DOMAIN }}" >> src/environment/environment.ts
-          echo "MESSAGE_SENDER_ID=${{ secrets.MESSAGE_SENDER_ID }}" >> src/environment/environment.ts
-          echo "MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }}" >> src/environment/environment.ts 
+      - name: Installing Dependencies
+        run: npm install
+        
+      - name: Setup Environment Variables 
+        env:
+          FIREBASE: ${{secrets.FIREBASE}}
+        run: 
+          node scripts/env.js
 
-      - name: Install
-        run: npm ci
-
-      - name: Build  
+      - name: Building App
         run: npm run build
 
-      - name: Deploy
+      - name: Deploying App
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'

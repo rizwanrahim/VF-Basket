@@ -12,17 +12,19 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Installing Dependencies
-        run: npm install
-        
-      - name: Setup Environment Variables 
+      - name: Setup Node.js
+        uses: actions/setup-node@v14
+        with:
+          node-version: 14
+          
+      - name: Setup Environment Variables
         env:
           FIREBASE: ${{secrets.FIREBASE}}
         run: 
           node scripts/env.js
 
       - name: Building App
-        run: npm run build
+        run: npm ci && npm run build
 
       - name: Deploying App
         uses: FirebaseExtended/action-hosting-deploy@v0
