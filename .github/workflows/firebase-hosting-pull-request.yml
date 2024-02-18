@@ -29,15 +29,15 @@ jobs:
       - name: Display Updated Environment File
         run: cat src/environments/environment.ts
 
-      - name: Install
-        run: npm install
+      # - name: Install
+      #   run: npm install
 
-      - name: Build
-        run: npm run build
+      # - name: Build
+      #   run: npm run build
 
-      - name: Deploy
-        uses: FirebaseExtended/action-hosting-deploy@v0
-        with:
-          repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
-          projectId: vnf-basket
+      # - name: Deploy
+      #   uses: FirebaseExtended/action-hosting-deploy@v0
+      #   with:
+      #     repoToken: '${{ secrets.GITHUB_TOKEN }}'
+      #     firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
+      #     projectId: vnf-basket

@@ -21,4 +21,9 @@ const updatedContent = Object.entries(replacements).reduce(
 
 fs.writeFileSync(filePath, updatedContent, 'utf8');
 
+// Set outputs to make values available for subsequent steps
+Object.entries(replacements).forEach(([key, value]) => {
+  console.log(`::set-output name=${key}::${value}`);
+});
+
 console.log('environment.ts file updated successfully.');
