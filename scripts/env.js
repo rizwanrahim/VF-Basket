@@ -1,5 +1,4 @@
 const { execSync } = require('child_process');
-const core = require('@actions/core');
 
 try {
 
@@ -7,5 +6,5 @@ try {
   console.log(secret);
 
 } catch (error) {
-  core.setFailed(error.message);
+  console.log(error);
 }
