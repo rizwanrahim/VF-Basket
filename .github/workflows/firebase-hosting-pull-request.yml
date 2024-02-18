@@ -22,6 +22,7 @@ jobs:
           # Remove spaces from the variable
           SECRET_WITHOUT_SPACES=$(echo "${SECRET_WITH_SPACES}" | sed 's/ //g')
           echo "Secret without spaces: $SECRET_WITHOUT_SPACES"
+        shell: bash
 
       - name: Update Environment File
         run: |
