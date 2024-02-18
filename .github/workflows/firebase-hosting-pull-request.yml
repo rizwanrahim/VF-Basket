@@ -23,7 +23,7 @@ jobs:
       - name: Execute 
         env:
           PROJECT_ID: ${{secrets.PROJECT_ID}}
-        run: node scripts/env.json
+        run: node scripts/env.js
           
       # - name: Install
       #   run: npm install
