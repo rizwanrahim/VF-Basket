@@ -20,21 +20,21 @@ jobs:
       #   with:
       #     node-version: '14'
 
-      # - name: Setup Environment Variables 
-      #   env:
-      #     FIREBASE: ${{secrets.FIREBASE}}
-      #   run: 
-      #     node scripts/env.js
+      - name: Setup Environment Variables 
+        env:
+          FIREBASE: ${{secrets.FIREBASE}}
+        run: 
+          node scripts/env.js
           
-      - name: Install Dependencies
+      - name: Installing Dependencies
         run: npm install
 
-      - name: Build App
+      - name: Building App
         run: npm run build
 
-      - name: Deploy App
+      - name: Deploying App
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
-          firebaseServiceAccount: '${{ secrets.SERVICE_ACCOUNT_VNF_BASKET }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
           projectId: vnf-basket
