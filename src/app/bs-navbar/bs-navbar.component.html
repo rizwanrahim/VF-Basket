@@ -13,11 +13,11 @@
                     <a routerLink="/shopping-cart" routerLinkActive="active"
                         class="nav-link link-body-emphasis px-2">Shopping Cart</a>
                 </li>
-                <li class="nav-item dropdown">
+                <li *ngIf="user" class="nav-item dropdown">
                     <div ngbDropdown class="d-inline">
                         <button type="button" class="nav-link link-body-emphasis px-2" id="dropdownBasic1"
                             ngbDropdownToggle>
-                            User Name
+                            {{user.displayName}}
                         </button>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <a routerLink="/orders" routerLinkActive="active"
@@ -26,10 +26,14 @@
                                 class="nav-link link-body-emphasis px-3">Manage Orders</a>
                             <a routerLink="/admin/products" routerLinkActive="active"
                                 class="nav-link link-body-emphasis px-3">Manage Products</a>
-                            <a routerLink="/" routerLinkActive="active" class="nav-link link-body-emphasis px-3">Log
+                            <a (click)="logout()" routerLinkActive="active" class="nav-link link-body-emphasis px-3 clickable">Log
                                 Out</a>
                         </div>
                     </div>
+                </li>
+                <li class="nav-item" *ngIf="!user">
+                    <a (click)="login()" routerLinkActive="active"
+                        class="nav-link link-body-emphasis px-2 clickable">Login with google</a>
                 </li>
             </ul>
         </div>

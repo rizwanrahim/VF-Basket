@@ -10,10 +10,23 @@ jobs:
   build_and_deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v4
-      - run: npm ci
-      - run: npm run build
-      - uses: FirebaseExtended/action-hosting-deploy@v0
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Installing Dependencies
+        run: npm install
+        
+      - name: Setup Environment Variables 
+        env:
+          FIREBASE: ${{secrets.FIREBASE}}
+        run: 
+          node scripts/env.js
+
+      - name: Building App
+        run: npm run build
+
+      - name: Deploying App
+        uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
           firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
