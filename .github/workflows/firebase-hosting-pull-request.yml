@@ -14,15 +14,21 @@ jobs:
         
       - name: Update Environment File
         run: |
-          echo "Setting environment variables..."
-          source src/environments/temp-environment.ts
-          echo "GITHUB_PROJECT_ID=${GITHUB_PROJECT_ID}" >> $GITHUB_ENV
-          echo "GITHUB_APP_ID=${GITHUB_APP_ID}" >> $GITHUB_ENV
-          echo "GITHUB_STORAGE_BUCKET=${GITHUB_STORAGE_BUCKET}" >> $GITHUB_ENV
-          echo "GITHUB_API_KEY=${GITHUB_API_KEY}" >> $GITHUB_ENV
-          echo "GITHUB_AUTH_DOMAIN=${GITHUB_AUTH_DOMAIN}" >> $GITHUB_ENV
-          echo "GITHUB_MESSAGING_SENDER_ID=${GITHUB_MESSAGING_SENDER_ID}" >> $GITHUB_ENV
-          echo "GITHUB_MEASUREMENT_ID=${GITHUB_MEASUREMENT_ID}" >> $GITHUB_ENV
+          sed -i "s/'PROJECT_ID'/'${{ secrets.PROJECT_ID }}'/g" src/environments/environment.ts
+          sed -i "s/'APP_ID'/'${{ secrets.APP_ID }}'/g" src/environments/environment.ts
+          sed -i "s/'STORAGE_BUCKET'/'${{ secrets.STORAGE_BUCKET }}'/g" src/environments/environment.ts
+          sed -i "s/'API_KEY'/'${{ secrets.API_KEY }}'/g" src/environments/environment.ts
+          sed -i "s/'AUTH_DOMAIN'/'${{ secrets.AUTH_DOMAIN }}'/g" src/environments/environment.ts
+          sed -i "s/'MESSAGING_SENDER_ID'/'${{ secrets.MESSAGING_SENDER_ID }}'/g" src/environments/environment.ts
+          sed -i "s/'MEASUREMENT_ID'/'${{ secrets.MEASUREMENT_ID }}'/g" src/environments/environment.ts
+        env:
+          PROJECT_ID: ${{ secrets.PROJECT_ID }}
+          APP_ID: ${{ secrets.APP_ID }}
+          STORAGE_BUCKET: ${{ secrets.STORAGE_BUCKET }}
+          API_KEY: ${{ secrets.API_KEY }}
+          AUTH_DOMAIN: ${{ secrets.AUTH_DOMAIN }}
+          MESSAGING_SENDER_ID: ${{ secrets.MESSAGING_SENDER_ID }}
+          MEASUREMENT_ID: ${{ secrets.MEASUREMENT_ID }}
 
       - name: Display Updated Environment File
         run: cat src/environments/environment.ts
