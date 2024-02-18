@@ -15,7 +15,9 @@ jobs:
       - name: Display Updated Environment File
         run: cat src/environments/environment.ts
 
-      - name: Execute Script
+      - name: Execute 
+        env:
+          PROJECT_ID: ${{secrets.PROJECT_ID}}
         run: node scripts/env.js
       # - name: Install
       #   run: npm install
