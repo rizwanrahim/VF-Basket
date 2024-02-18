@@ -12,22 +12,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # - name: Display Updated Environment File
-      #   run: cat src/environments/environment.ts
-
-      # - name: Set up Node.js
-      #   uses: actions/setup-node@v2
-      #   with:
-      #     node-version: '14'
-
+      - name: Installing Dependencies
+        run: npm install
+        
       - name: Setup Environment Variables 
         env:
           FIREBASE: ${{secrets.FIREBASE}}
         run: 
           node scripts/env.js
-          
-      - name: Installing Dependencies
-        run: npm install
 
       - name: Building App
         run: npm run build
