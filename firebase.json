@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/vnf-basket/browser",
+    "public": "./dist/vnf-basket/browser",
     "ignore": [
       "firebase.json",
       "**/.*",
