@@ -26,7 +26,7 @@ jobs:
 
       - name: Update Environment File
         run: |
-          sed -i "s/'PROJECT_ID'/'${{ secrets.FIREBASE_PROJECT_ID }}'| sed s/./& /g" src/environments/environment.ts
+          sed -i "s/'PROJECT_ID'/'${{ secrets.FIREBASE_PROJECT_ID }}'./& /g" src/environments/environment.ts
           # sed -i "s/'APP_ID'/'${{ secrets.FIREBASE_APP_ID }}'/g" src/environments/environment.ts
           # sed -i "s/'STORAGE_BUCKET'/'${{ secrets.FIREBASE_STORAGE_BUCKET }}'/g" src/environments/environment.ts
           # sed -i "s/'API_KEY'/'${{ secrets.FIREBASE_API_KEY }}'/g" src/environments/environment.ts
