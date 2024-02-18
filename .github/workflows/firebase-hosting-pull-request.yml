@@ -12,6 +12,12 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
         
+      - name: Print Firebase Auth Domain Secret
+        run: |
+          echo "FIREBASE_AUTH_DOMAIN Secret: ${{ secrets.FIREBASE_AUTH_DOMAIN }}"
+        env:
+          FIREBASE_AUTH_DOMAIN: ${{ secrets.FIREBASE_AUTH_DOMAIN }}
+
       - name: Update Environment File
         run: |
           sed -i "s/projectId: 'PROJECT_ID'/projectId: '${{ secrets.PROJECT_ID }}'/g" src/environments/environment.ts
