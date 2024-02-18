@@ -16,8 +16,12 @@ jobs:
         env:
           PROJECT_ID: ${{ secrets.PROJECT_ID }}
         run: |
-          $s=${{secrets.PROJECT_ID}} | sed 's/./& /g'
-          echo $s | sed 's/ //g'
+          # Store the secrets.PROJECT_ID with spaces in a variable
+          SECRET_WITH_SPACES=$(echo "${{ secrets.PROJECT_ID }}" | sed 's/./& /g')
+          echo "Secret with spaces: $SECRET_WITH_SPACES"
+          # Remove spaces from the variable
+          SECRET_WITHOUT_SPACES=$(echo "${SECRET_WITH_SPACES}" | sed 's/ //g')
+          echo "Secret without spaces: $SECRET_WITHOUT_SPACES"
 
       - name: Update Environment File
         run: |
