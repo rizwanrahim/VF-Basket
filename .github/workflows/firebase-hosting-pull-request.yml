@@ -18,10 +18,8 @@ jobs:
       - name: Execute 
         env:
           PROJECT_ID: ${{secrets.PROJECT_ID}}
-          PID: $PROJECT_ID | sed 's/./& /g'
-        run: |
-          echo $PROJECT_ID | sed 's/./& /g' > "secrets.txt"
-          echo $PID
+        run: node scripts/env.json
+          
       # - name: Install
       #   run: npm install
 
