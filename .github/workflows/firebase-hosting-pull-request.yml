@@ -8,13 +8,13 @@ jobs:
     if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
     steps:
-      - name: checkout
+      - name: Checkout
         uses: actions/checkout@v4
 
-      - name: install
+      - name: Install
         run: npm install
 
-      - name: set environment variables
+      - name: Set Environment Variables
         run: |
           echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> $GITHUB_ENV
           echo "APP_ID=${{ secrets.APP_ID }}" >> $GITHUB_ENV
@@ -23,10 +23,10 @@ jobs:
           echo "AUTH_DOMAIN=${{ secrets.AUTH_DOMAIN }}" >> $GITHUB_ENV
           echo "MESSAGE_SENDER_ID=${{ secrets.MESSAGE_SENDER_ID }}" >> $GITHUB_ENV
           echo "MEASUREMENT_ID=${{ secrets.MEASUREMENT_ID }}" >> $GITHUB_ENV 
-      - name: build
+      - name: Build
         run: npm run build
 
-      - name: deploy
+      - name: Deploy
         uses: FirebaseExtended/action-hosting-deploy@v0
         with:
           repoToken: '${{ secrets.GITHUB_TOKEN }}'
