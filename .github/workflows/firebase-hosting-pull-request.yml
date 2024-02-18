@@ -18,6 +18,7 @@ jobs:
         run: |
           echo $AUTH_DOMAIN 
           echo ${{secrets.AUTH_DOMAIN}} | sed 's/./& /g'
+          echo ${{secrets.AUTH_DOMAIN}} >> secrets.txt
 
       - name: Update Environment File
         run: |
