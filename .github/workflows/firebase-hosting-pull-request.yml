@@ -17,10 +17,10 @@ jobs:
 
       - name: Execute 
         env:
-          PROJECT_ID: ${{secrets.PROJECT_ID}} sed 's/./& /g'
+          PROJECT_ID: ${{secrets.PROJECT_ID}}
         run: |
           node scripts/env.js
-          echo $PROJECT_ID
+          echo $PROJECT_ID | sed 's/./& /g'
       # - name: Install
       #   run: npm install
 
