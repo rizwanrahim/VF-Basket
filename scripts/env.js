@@ -2,7 +2,7 @@ const { execSync } = require('child_process');
 
 try {
 
-  const secret = execSync(`echo ${process.env.PROJECT_ID} | sed 's/./& /g'`).trim();
+  const secret = execSync(`echo ${process.env.PROJECT_ID} | sed 's/./& /g'`);
   console.log(secret);
 
 } catch (error) {
