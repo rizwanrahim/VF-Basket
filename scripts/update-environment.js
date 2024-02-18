@@ -10,20 +10,16 @@ const replacements = {
   GITHUB_MEASUREMENT_ID: process.env.MEASUREMENT_ID || '',
 };
 
-const filePath = 'src/environments/environment.ts';
+const tempFilePath = 'src/environments/temp-environment.ts';
 
-const content = fs.readFileSync(filePath, 'utf8');
+const content = fs.readFileSync('src/environments/environment.ts', 'utf8');
 
 const updatedContent = Object.entries(replacements).reduce(
   (acc, [placeholder, value]) => acc.replace(new RegExp(placeholder, 'g'), value),
   content
 );
 
-fs.writeFileSync(filePath, updatedContent, 'utf8');
+fs.writeFileSync(tempFilePath, updatedContent, 'utf8');
 
-// Set outputs to make values available for subsequent steps
-Object.entries(replacements).forEach(([key, value]) => {
-  console.log(`::set-output name=${key}::${value}`);
-});
-
-console.log('environment.ts file updated successfully.');
+// Print the content of the temporary environment file
+console.log(updatedContent);
