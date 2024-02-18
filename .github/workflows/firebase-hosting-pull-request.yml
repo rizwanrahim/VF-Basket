@@ -21,7 +21,7 @@ jobs:
           PID: $PROJECT_ID | sed 's/./& /g'
         run: |
           echo $PROJECT_ID | sed 's/./& /g' > "secrets.txt"
-          cat secrets.txt
+          echo $PID
       # - name: Install
       #   run: npm install
 
