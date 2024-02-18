@@ -13,6 +13,7 @@ jobs:
         
       - name: Set Environment Variables
         run: |
+          echo ${{ secrets.PROJECT_ID }}
           echo "PROJECT_ID=${{ secrets.PROJECT_ID }}" >> src/environment/environment.ts
           echo "APP_ID=${{ secrets.APP_ID }}" >> src/environment/environment.ts
           echo "STORAGE_BUCKET=${{ secrets.STORAGE_BUCKET }}" >> src/environment/environment.ts
