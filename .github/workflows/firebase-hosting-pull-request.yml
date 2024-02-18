@@ -13,6 +13,7 @@ jobs:
         
       - name: Set Environment Variables
         run: |
+          cat src/environments/environment.ts
           sed -i "s/GITHUB_SECRET/${{ secrets.PROJECT_ID }}/g" src/environments/environment.ts
           sed -i "s/GITHUB_SECRET/${{ secrets.APP_ID }}/g" src/environments/environment.ts
           sed -i "s/GITHUB_SECRET/${{ secrets.STORAGE_BUCKET }}/g" src/environments/environment.ts
