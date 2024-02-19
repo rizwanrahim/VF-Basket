@@ -5,11 +5,11 @@ name: Deploy to Firebase Hosting When PR on main
 on: 
   pull_request:
     branches:
-      - '*'
+      - main
       
 jobs:
   build_and_preview:
-    if: ${{ github.event_name == 'pull_request' && github.event.pull_request.base.ref != 'main' }}
+    if: '${{ github.event.pull_request.head.repo.full_name == github.repository }}'
     runs-on: ubuntu-latest
 
     steps:
@@ -29,3 +29,10 @@ jobs:
 
       - name: Building App
         run: npm install && npm run build
+
+      - name: Deploying App
+        uses: FirebaseExtended/action-hosting-deploy@v0
+        with:
+          repoToken: '${{ secrets.GITHUB_TOKEN }}'
+          firebaseServiceAccount: '${{ secrets.FIREBASE_SERVICE_ACCOUNT_VNF_BASKET }}'
+          projectId: vnf-basket
