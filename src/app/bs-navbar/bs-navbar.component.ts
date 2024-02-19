@@ -22,7 +22,9 @@ export class BsNavbarComponent {
   }
  
   logout() {
-    this.auth.logout();
+    this.auth.logout().then(() => {
+      this.user = null;
+    });
   }
 
 }
