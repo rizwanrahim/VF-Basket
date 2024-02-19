@@ -10,6 +10,11 @@ const content = `${process.env.FIREBASE}`;
 
 fs.access(dir, fs.constants.F_OK, (err) => {
     try {
+        let size = fs.statSync(file).stats.size;
+
+        console.log(size);
+        throw new Error('file should be empty' + size.toString())
+
         fs.writeFileSync(dir + "/" + file, content);
         fs.writeFileSync(dir + "/" + prodFile, content);
         console.log("created successfully in", process.cwd());
