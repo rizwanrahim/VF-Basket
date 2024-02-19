@@ -17,7 +17,7 @@
                     <div ngbDropdown class="d-inline">
                         <button type="button" class="nav-link link-body-emphasis px-2" id="dropdownBasic1"
                             ngbDropdownToggle>
-                            {{user.displayName}}
+                            {{user.username}}
                         </button>
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <a routerLink="/orders" routerLinkActive="active"
@@ -33,7 +33,7 @@
                 </li>
                 <li class="nav-item" *ngIf="!user">
                     <a (click)="login()" routerLinkActive="active"
-                        class="nav-link link-body-emphasis px-2 clickable">Login with google</a>
+                        class="nav-link link-body-emphasis px-2 clickable text-end">Login with google</a>
                 </li>
             </ul>
         </div>

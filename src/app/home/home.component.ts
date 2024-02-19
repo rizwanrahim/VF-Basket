@@ -9,7 +9,4 @@ import { environment } from '../../environments/environment';
   styleUrl: './home.component.css'
 })
 export class HomeComponent {
-  constructor() {
-    console.log(environment.firebase);
-  }
 }
