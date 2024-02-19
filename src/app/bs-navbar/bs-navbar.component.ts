@@ -1,10 +1,9 @@
 import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { GoogleAuthProvider, User } from 'firebase/auth';
-import firebase from 'firebase/compat/app';
+import { AuthService } from '../services/auth/auth.service';
+import { AppUser } from '../models/AppUser';
 @Component({
   selector: 'bs-navbar',
   standalone: true,
@@ -13,18 +12,19 @@ import firebase from 'firebase/compat/app';
   styleUrl: './bs-navbar.component.css'
 })
 export class BsNavbarComponent {
-  user:any;
-
-  constructor(private auth: AngularFireAuth) {
-    this.auth.authState.subscribe(user => this.user = user);
-  }
-
-  logout() {
-    this.auth.signOut()
+  user: AppUser| null | undefined;
+  constructor(public readonly auth: AuthService) {
+    
   }
 
   async login() {
-    const user = await this.auth.signInWithPopup(new GoogleAuthProvider());
-    console.log(user);
+      this.user = await this.auth.login();
   }
+ 
+  logout() {
+    this.auth.logout().then(() => {
+      this.user = null;
+    });
+  }
+
 }
