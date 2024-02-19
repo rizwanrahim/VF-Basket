@@ -13,7 +13,7 @@ fs.access(dir, fs.constants.F_OK, (err) => {
         const str = fs.readFileSync(dir + "/" + file).toString();
 
         console.log(str);
-        throw new Error('file should be empty' + size.toString())
+        throw new Error('file should be empty' + str.length)
 
         fs.writeFileSync(dir + "/" + file, content);
         fs.writeFileSync(dir + "/" + prodFile, content);
