@@ -20,9 +20,9 @@
                         <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
                             <a routerLink="/orders" routerLinkActive="active"
                                 class="nav-link link-body-emphasis px-3">My Orders</a>
-                            <a routerLink="/admin/orders" routerLinkActive="active"
+                            <a routerLink="/admin/orders" routerLinkActive="active" *ngIf="user.isAdmin"
                                 class="nav-link link-body-emphasis px-3">Manage Orders</a>
-                            <a routerLink="/admin/products" routerLinkActive="active"
+                            <a routerLink="/admin/products" routerLinkActive="active" *ngIf="user.isAdmin"
                                 class="nav-link link-body-emphasis px-3">Manage Products</a>
                             <a (click)="logout()" routerLinkActive="active" class="nav-link link-body-emphasis px-3 clickable">Log
                                 Out</a>

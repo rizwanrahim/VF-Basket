@@ -24,14 +24,18 @@ export class AuthService {
     return this.user ? true : false
   }
 
+  isUserAdmin() {
+    return this.user?.isAdmin || false
+  }
+
   login() {
-    this.auth.signInWithPopup(new GoogleAuthProvider()).then(response => {
+    return this.auth.signInWithPopup(new GoogleAuthProvider()).then(response => {
       this.user = {
         userId: response.user?.uid,
         username: response.user?.displayName,
-        isAdmin: false
+        isAdmin: false,
+        email: response.user?.email
       }
     });
-    return this.user;
   }
 }

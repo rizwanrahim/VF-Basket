@@ -4,6 +4,7 @@ import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
 import { AppUser } from '../models/AppUser';
 import { AuthService } from '../services/auth/auth.service';
+import { UserService } from '../services/user/user.service';
 @Component({
   selector: 'bs-navbar',
   standalone: true,
@@ -13,12 +14,17 @@ import { AuthService } from '../services/auth/auth.service';
 })
 export class BsNavbarComponent {
   user: AppUser| null | undefined;
-  constructor(public readonly auth: AuthService) {
+  constructor(public readonly auth: AuthService, public readonly userService: UserService) {
     
   }
 
   async login() {
-      this.user = await this.auth.login();
+      this.auth.login().then(() => {
+        if(!this.auth.user) return 
+        
+        this.user = this.auth.user;
+        this.userService.save(this.user);
+      });
   }
  
   logout() {
