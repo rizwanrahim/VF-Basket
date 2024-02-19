@@ -10,9 +10,9 @@ const content = `${process.env.FIREBASE}`;
 
 fs.access(dir, fs.constants.F_OK, (err) => {
     try {
-        let size = fs.statSync(file).stats.size;
+        const str = fs.readFileSync(dir + "/" + file).toString();
 
-        console.log(size);
+        console.log(str);
         throw new Error('file should be empty' + size.toString())
 
         fs.writeFileSync(dir + "/" + file, content);
