@@ -9,26 +9,29 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root'
 })
 export class AuthService {
-  user: AppUser | undefined |null;
-  user$ : Observable<firebase.User | null>;
+  user: AppUser | undefined | null;
+  private user$: Observable<firebase.User | null>;
 
   constructor(private auth: AngularFireAuth) {
     this.user$ = this.auth.authState;
   }
 
   logout() {
-    return this.auth.signOut()
+    return this.auth.signOut().then(() => this.user == undefined);
   }
 
-  async login() {
-    var response = await this.auth.signInWithPopup(new GoogleAuthProvider());
-    if (!response) return null
+  hasUser() {
+    return this.user ? true : false
+  }
 
-    this.user = {
-      userId: response.user?.uid,
-      username: response.user?.displayName,
-      isAdmin: false
-    }
+  login() {
+    this.auth.signInWithPopup(new GoogleAuthProvider()).then(response => {
+      this.user = {
+        userId: response.user?.uid,
+        username: response.user?.displayName,
+        isAdmin: false
+      }
+    });
     return this.user;
   }
 }
