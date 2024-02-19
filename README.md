@@ -1,5 +1,12 @@
 # VnfBasket
 
+[![Build On Commit](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-commit.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-commit.yml)
+[![Build On PR](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-pr.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-pr.yml)
+[![Deploy On Merge](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/deploy-on-merge.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/deploy-on-merge.yml)
+[![Deploy On PR To Main](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/deploy-on-pr-to-main.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/deploy-on-pr-to-main.yml)
+[![Deploy to Firebase Hosting When Commit](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/firebase-hosting-build-commit.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/firebase-hosting-build-commit.yml)
+[![Deploy to Firebase Hosting When PR on main](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/firebase-hosting-pull-request-on-main.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/firebase-hosting-pull-request-on-main.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
 
 ## Development server
