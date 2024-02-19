@@ -6,14 +6,15 @@ import { CheckOutComponent } from './check-out/check-out.component';
 import { OrderSuccessComponent } from './order-success/order-success.component';
 import { AdminProductsComponent } from './admin/admin-products/admin-products.component';
 import { MyOrderComponent } from './my-order/my-order.component';
+import { IsLogin } from './services/auth-guard/IsLogin';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent },
-    { path: 'products', component: ProductsComponent },
-    { path: 'shopping-cart', component: ShoppingCartComponent },
-    { path: 'check-out', component: CheckOutComponent },
-    { path: 'order-success', component: OrderSuccessComponent },
-    { path: 'admin/products', component: AdminProductsComponent },
-    { path: 'admin/orders', component: AdminProductsComponent },
-    { path: 'orders', component: MyOrderComponent },
+    { path: 'products', component: ProductsComponent, canActivate: [IsLogin] },
+    { path: 'shopping-cart', component: ShoppingCartComponent, canActivate: [IsLogin] },
+    { path: 'check-out', component: CheckOutComponent, canActivate: [IsLogin] },
+    { path: 'order-success', component: OrderSuccessComponent, canActivate: [IsLogin] },
+    { path: 'admin/products', component: AdminProductsComponent, canActivate: [IsLogin] },
+    { path: 'admin/orders', component: AdminProductsComponent, canActivate: [IsLogin] },
+    { path: 'orders', component: MyOrderComponent, canActivate: [IsLogin] },
 ];

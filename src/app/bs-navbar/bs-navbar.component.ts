@@ -2,8 +2,8 @@ import { CommonModule } from '@angular/common';
 import { Component } from '@angular/core';
 import { RouterLink, RouterLinkActive, RouterOutlet } from '@angular/router';
 import { NgbDropdownModule } from '@ng-bootstrap/ng-bootstrap';
-import { AuthService } from '../services/auth/auth.service';
 import { AppUser } from '../models/AppUser';
+import { AuthService } from '../services/auth/auth.service';
 @Component({
   selector: 'bs-navbar',
   standalone: true,
@@ -24,6 +24,7 @@ export class BsNavbarComponent {
   logout() {
     this.auth.logout().then(() => {
       this.user = null;
+      
     });
   }
 
