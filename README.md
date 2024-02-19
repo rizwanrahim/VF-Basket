@@ -1,5 +1,7 @@
 # VnfBasket
 
+[![Build On Commit](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-commit.yml/badge.svg?branch=main)](https://github.com/rizwanrahim/VnF-Basket/actions/workflows/build-on-commit.yml)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.1.3.
 
 ## Development server
