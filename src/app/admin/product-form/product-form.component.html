@@ -1,1 +1,27 @@
-<p>product-form works!</p>
+<form action="">
+    <div class="form-group">
+        <label for="title">Title</label>
+        <input type="text" id="title" class="form-control">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <div class="input-group">
+            <span class="input-group-text">$</span>
+            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+          </div>
+    </div>
+    <div class="form-group">
+        <label for="category">Category</label>
+        <select type="text" id="category" class="form-control">
+            <option value=""></option>
+            <option *ngFor="let category of categories$" [value]="category">{{ category }}</option>
+        </select>
+    </div>
+    <div class="form-group">
+        <label for="imageURL">Image URL</label>
+        <input type="text" id="imageURL" class="form-control">
+    </div>
+    <div class="form-group">
+        <button class="btn btn-primary">Save</button>
+    </div>
+</form>
