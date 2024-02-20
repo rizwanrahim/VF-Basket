@@ -11,8 +11,8 @@ import { DatabaseService } from '../firebase/database.service';
 export class UserService {
   private user: AppUser | null | undefined;
   constructor(
-    public readonly auth: AuthService,
-    public readonly db: DatabaseService) {
+    private readonly auth: AuthService,
+    private readonly db: DatabaseService) {
   }
 
   save(user: AppUser) {
