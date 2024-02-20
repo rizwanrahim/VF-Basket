@@ -3,6 +3,7 @@ import { AngularFireDatabase } from '@angular/fire/compat/database';
 import { AppUser } from '../../models/AppUser';
 import { AuthService } from '../auth/auth.service';
 import { firstValueFrom, lastValueFrom, map } from 'rxjs';
+import { environment } from './../../../environments/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -37,13 +38,24 @@ export class UserService {
   }
 
   async login(): Promise<AppUser | null | undefined> {
+    if (environment.production) return await this.UserFromService();
+    
+    this.user = {
+      email:"iamrizwanrahim@gmail.com",
+      isAdmin: true,
+      userId: "iamrizwanrahim",
+      username:"Rizwan Rahim"
+    }
+    return this.user;
+  }
+
+  private async UserFromService() {
     var authResponse = await this.auth.login();
 
     if (authResponse.userId == null) throw new Error("User ID is null");
     let user$ = await firstValueFrom(this.get(authResponse.userId));
-    
+
     var res = user$ || authResponse;
-    console.log(res);
     this.user = {
       username: res.username,
       email: res.username,
