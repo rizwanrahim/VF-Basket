@@ -14,7 +14,9 @@ import { UserService } from '../services/user/user.service';
 })
 export class BsNavbarComponent {
   user: AppUser| null | undefined;
-  constructor(public readonly userService: UserService) {
+  constructor(public readonly userService: UserService, router: Router) {
+    this.userService.login().then(user => this.user = user)     
+    router.navigate(["/admin/products/new"])
   }
 
   login() {
