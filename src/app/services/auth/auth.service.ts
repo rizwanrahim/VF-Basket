@@ -9,7 +9,7 @@ import firebase from 'firebase/compat/app';
   providedIn: 'root'
 })
 export class AuthService {
-  user: AppUser | undefined | null;
+  private user: AppUser | undefined | null;
   private user$: Observable<firebase.User | null>;
 
   constructor(private auth: AngularFireAuth) {
@@ -20,22 +20,18 @@ export class AuthService {
     return this.auth.signOut().then(() => this.user == undefined);
   }
 
-  hasUser() {
-    return this.user ? true : false
-  }
-
-  isUserAdmin() {
-    return this.user?.isAdmin || false
-  }
-
   login() {
     return this.auth.signInWithPopup(new GoogleAuthProvider()).then(response => {
-      this.user = {
-        userId: response.user?.uid,
+      return this.user = {
         username: response.user?.displayName,
         isAdmin: false,
-        email: response.user?.email
+        email: response.user?.email,
+        userId: this.getUserId(response.user?.email)
       }
     });
+  }
+
+  getUserId(email: string | null | undefined): string | null | undefined {
+    return email?.split("@")[0].replace(".", "+");
   }
 }
