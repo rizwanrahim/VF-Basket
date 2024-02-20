@@ -7,7 +7,7 @@ import { UserService } from '../user/user.service';
 })
 export class AuthGuardService {
   isAdmin: boolean = false;
-  constructor(public readonly userService: UserService) { }
+  constructor(private readonly userService: UserService) { }
 
   appActivation(): boolean {
     return this.userService.hasUser();

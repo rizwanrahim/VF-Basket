@@ -7,8 +7,9 @@ import { AppUser } from '../../models/AppUser';
 })
 export class DatabaseService {
   private readonly users = '/users/';
-  private readonly category = '/categories'
-  constructor(public readonly db: AngularFireDatabase) { }
+  private readonly categories = '/categories'
+  private readonly products = '/products'
+  constructor(private readonly db: AngularFireDatabase) { }
   
   saveUser(user: AppUser) {
     this.db.object(this.users + user.userId).update({
@@ -22,7 +23,11 @@ export class DatabaseService {
     return this.db.object<AppUser>(this.users + id).valueChanges();
   }
 
+  saveProduct(product: any) {
+    return this.db.list(this.products).push(product)
+  }
+
   getCategory() {
-    return this.db.list(this.category).valueChanges()
+    return this.db.list(this.categories).valueChanges()
   }
 }

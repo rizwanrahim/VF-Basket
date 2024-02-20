@@ -1,27 +1,55 @@
-<form action="">
-    <div class="form-group">
-        <label for="title">Title</label>
-        <input type="text" id="title" class="form-control">
+<div class="row">
+    <div class="col-md-6">
+        <form #f="ngForm" (ngSubmit)="save(f.value)">
+            <div class="form-group">
+                <label for="title">Title</label>
+                <input ngModel id="title" name="title" #title="ngModel" type="text" class="form-control" required>
+            </div>
+            <div *ngIf="title.invalid && (title.dirty || title.touched)">
+                <div class="alert alert-danger" *ngIf="title.errors?.['required']">Title is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="price">Price</label>
+                <div class="input-group">
+                    <span class="input-group-text">$</span>
+                    <input ngModel="price" id="price" name="price" [min]="0" #price="ngModel" type="number" class="form-control"
+                        aria-label="Amount (to the nearest dollar)"  required pattern="^\d+(\.\d{1,2})?$">
+                </div>
+                <div *ngIf="price.invalid && (price.dirty || price.touched)">
+                    <div class="alert alert-danger" *ngIf="price.errors?.['required']">Price is required.</div>
+                    <div class="alert alert-danger" *ngIf="price.errors?.['pattern']">Please enter a valid price.</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="category">Category</label>
+                <select ngModel id="category" #category="ngModel" name="category" type="text" class="form-control" required>
+                    <option value=""></option>
+                    <option *ngFor="let category of categories$" [value]="category">{{ category }}</option>
+                </select>
+            </div>
+            <div *ngIf="category.invalid && (category.dirty || category.touched)">
+                <div class="alert alert-danger" *ngIf="title.errors?.['required']">Category is required.</div>
+            </div>
+            <div class="form-group">
+                <label for="imageURL">Image URL</label>
+                <input ngModel name="imageUrl" #imageURL="ngModel" type="text" id="imageURL" class="form-control" required pattern="\bhttps?:\/\/\S+?\.(?:png|jpe?g|gif|bmp|webp)\b">
+            </div>
+            <div *ngIf="imageURL.invalid && (imageURL.dirty || imageURL.touched)">
+                <div class="alert alert-danger" *ngIf="imageURL.errors?.['required']">Image URL is required.</div>
+                <div class="alert alert-danger" *ngIf="imageURL.errors?.['pattern']">Invalid Image URL.</div>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-primary" [disabled]="f.invalid">Save</button>
+            </div>
+        </form>
     </div>
-    <div class="form-group">
-        <label for="price">Price</label>
-        <div class="input-group">
-            <span class="input-group-text">$</span>
-            <input type="text" class="form-control" aria-label="Amount (to the nearest dollar)">
+    <div class="col-md-6">
+        <div class="card" style="width: 18rem;">
+            <img class="card-img-top" [src]="imageURL.value">
+            <div class="card-body">
+              <h5 class="card-title">{{ title.value }}</h5>
+              <p class="card-text">{{ price.value | currency: 'USD': true }}</p>
+            </div>
           </div>
     </div>
-    <div class="form-group">
-        <label for="category">Category</label>
-        <select type="text" id="category" class="form-control">
-            <option value=""></option>
-            <option *ngFor="let category of categories$" [value]="category">{{ category }}</option>
-        </select>
-    </div>
-    <div class="form-group">
-        <label for="imageURL">Image URL</label>
-        <input type="text" id="imageURL" class="form-control">
-    </div>
-    <div class="form-group">
-        <button class="btn btn-primary">Save</button>
-    </div>
-</form>
+</div>
