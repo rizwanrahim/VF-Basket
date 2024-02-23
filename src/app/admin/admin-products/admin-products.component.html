@@ -4,17 +4,16 @@
 <table class="table">
     <thead>
         <tr>
-            <th>Title</th>
+            <th>Product</th>
             <th>Price</th>
         </tr>
     </thead>
     <tbody>
         <tr *ngFor="let product of products$ ! async">
-            <td>{{ product.title }}</td>
-            <td>{{ product.price }}</td>
             <td>
-                <a [routerLink]="['/admin/products/', product.key]">Edit</a>
+                <a [routerLink]="['/admin/products/', product.key]"> {{ product.title }}</a>
             </td>
+            <td>{{ product.price | currency:'USD':'symbol':'1.2-2' }}</td>
         </tr>
     </tbody>
 </table>
