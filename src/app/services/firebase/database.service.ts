@@ -28,7 +28,7 @@ export class DatabaseService {
   }
 
   getAllProduct() {
-    return this.db.list(this.products).valueChanges();
+    return this.db.list(this.products).snapshotChanges();
   }
 
   getCategory() {

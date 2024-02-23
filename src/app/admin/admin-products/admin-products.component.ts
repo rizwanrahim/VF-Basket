@@ -14,8 +14,7 @@ export class AdminProductsComponent {
   products$: any;
   constructor(private readonly db: DatabaseService) {
     this.db.getAllProduct().subscribe(products => {
-      this.products$ = products
-      console.log(products)
+      this.products$ = products.map(item => ({ key: item.payload.key, ...item.payload.val() as any }));
     });
   }
 }
