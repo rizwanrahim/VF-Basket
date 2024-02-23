@@ -16,7 +16,6 @@ export class BsNavbarComponent {
   user: AppUser| null | undefined;
   constructor(private readonly userService: UserService, router: Router) {
     this.userService.login().then(user => this.user = user)     
-    router.navigate(["/admin/products/new"])
   }
 
   login() {
