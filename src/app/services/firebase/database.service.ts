@@ -27,6 +27,10 @@ export class DatabaseService {
     return this.db.list(this.products).push(product)
   }
 
+  getAllProduct() {
+    return this.db.list(this.products).valueChanges();
+  }
+
   getCategory() {
     return this.db.list(this.categories).valueChanges()
   }
