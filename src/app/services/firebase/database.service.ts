@@ -34,4 +34,16 @@ export class DatabaseService {
   getCategory() {
     return this.db.list(this.categories).valueChanges()
   }
+
+  getProduct(productId: string) {
+    return this.db.object(this.products + '/' + productId).snapshotChanges()
+  }
+
+  update(productId: string, product: any) {
+    return this.db.object(this.products + '/' + productId).update(product)
+  }
+
+  delete(productId: string) {
+    return this.db.object(this.products + '/' + productId).remove()
+  }
 }
